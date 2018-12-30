@@ -91,6 +91,26 @@ describe('isValidCurrency', () => {
     test('returns false when money is not provided', () => {
         expect(changeMachine.isValidCurrency()).toBe(false);
     });
+
+    test('returns false when null is provided', () => {
+        expect(changeMachine.isValidCurrency(null)).toBe(false);
+    });
+
+    test('returns false when undefined is provided', () => {
+        expect(changeMachine.isValidCurrency(undefined)).toBe(false);
+    });
+
+    test('returns false when -1 is provided', () => {
+        expect(changeMachine.isValidCurrency(-1)).toBe(false);
+    });
+
+    test('returns false when "" is provided', () => {
+        expect(changeMachine.isValidCurrency("")).toBe(false);
+    });
+
+    test('returns false when "1" is provided', () => {
+        expect(changeMachine.isValidCurrency("1")).toBe(false);
+    });
 });
 
 describe('returnChange', () => {

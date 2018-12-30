@@ -5,7 +5,9 @@ var changeMachine = (function() {
 
     var publicAPI = {
         isValidCurrency: function(money) {
-            return !!money && typeof money === 'number';
+            return !!money
+                && typeof money === 'number'
+                && money > 0;
         },
         convertToCents: function(dollars) {
 
