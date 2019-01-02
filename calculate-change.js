@@ -3,8 +3,12 @@
 var changeMachine = (function() {
     var centsPerDollar = 100;
 
+    function amountOfDenomination(cents, denominationInCents) {
+        return Math.floor(cents / denominationInCents);
+    }
+
     var publicAPI = {
-        isValidCurrency: function(money) {
+        isValidTender: function(money) {
             return !!money
                 && typeof money === 'number'
                 && money > 0;
@@ -21,7 +25,7 @@ var changeMachine = (function() {
 
             return dollars * centsPerDollar;
         },
-        returnChange: function(price, moneyPaid) {
+        processPayment: function(price, moneyPaid) {
 
             if (!moneyPaid) {
                 if (!price) {
@@ -35,7 +39,7 @@ var changeMachine = (function() {
                 return moneyPaid;
             }
 
-            if (!this.isValidCurrency(moneyPaid)) {
+            if (!this.isValidTender(moneyPaid)) {
                 throw Error("Invalid money: type of money must be number.");
             }
 
@@ -45,41 +49,41 @@ var changeMachine = (function() {
 
             return moneyPaid - price;
         },
-        processChange: function(price, moneyPaid) {
-            var changeInDollars = this.returnChange(price, moneyPaid);
+        pay: function(price, moneyPaid) {
+            var changeInDollars = this.processPayment(price, moneyPaid);
             var changeInCents = this.convertToCents(changeInDollars);
-            return this.returnChangeDenominations(changeInCents);
+            return this.changeInDenominations(changeInCents);
         },
-        returnChangeDenominations: function calculateDenomiations(cents) {
+        changeInDenominations: function calculateDenomiations(cents) {
             var denominations = {};
             var leftover;
 
             if (cents >= 10000) {
-                denominations['100'] = Math.floor(cents / 10000);
+                denominations['100'] = amountOfDenomination(cents, 10000);
                 leftover = cents % 10000;
             }
             else if (cents >= 200) {
-                denominations['2'] = Math.floor(cents / 200);
+                denominations['2'] = amountOfDenomination(cents, 200);
                 leftover = cents % 200;
             }
             else if (cents >= 100) {
-                denominations['1'] = Math.floor(cents / 100);
+                denominations['1'] = amountOfDenomination(cents, 100);
                 leftover = cents % 100;
             }
             else if (cents >= 50) {
-                denominations['50 cents'] = Math.floor(cents / 50);
+                denominations['50 cents'] = amountOfDenomination(cents, 50);
                 leftover = cents % 50;
             }
             else if (cents >= 20) {
-                denominations['20 cents'] = Math.floor(cents / 20);
+                denominations['20 cents'] = amountOfDenomination(cents, 20);
                 leftover = cents % 20;
             }
             else if (cents >= 10) {
-                denominations['10 cents'] = Math.floor(cents / 10);
+                denominations['10 cents'] = amountOfDenomination(cents, 10);
                 leftover = cents % 10;
             }
             else if (cents >= 5) {
-                denominations['5 cents'] = Math.floor(cents / 5);
+                denominations['5 cents'] = amountOfDenomination(cents, 5);
                 leftover = cents % 5;
             }
             
