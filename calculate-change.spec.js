@@ -1,6 +1,10 @@
 var changeMachine = require('./calculate-change');
 
 describe('pay', () => {
+    test('Throws an error', () => {
+        expect(function() { changeMachine.pay(4, -0.05) }).toThrow('Invalid money');
+    });
+
     test('returns 1 X 1 dollar change, for 5 dollars given for 4 dollar item', () => {
         var denominations = {
             '1': 1

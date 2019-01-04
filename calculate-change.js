@@ -62,6 +62,10 @@ var changeMachine = (function() {
                 denominations['100'] = amountOfDenomination(cents, 10000);
                 leftover = cents % 10000;
             }
+            else if (cents >= 500) {
+                denominations['5'] = amountOfDenomination(cents, 500);
+                leftover = cents % 500;
+            }
             else if (cents >= 200) {
                 denominations['2'] = amountOfDenomination(cents, 200);
                 leftover = cents % 200;
@@ -99,5 +103,4 @@ var changeMachine = (function() {
     return publicAPI;
 })();
 
-
-module.exports = changeMachine;
+// module.exports = changeMachine;
