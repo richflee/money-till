@@ -33,6 +33,15 @@ window.onload = function() {
     submitBtn.addEventListener("click", function() {
         var paymentInput = +document.getElementById("payment-input").value;
         var itemPrice = +document.getElementById("price-display").innerText.replace('$', '');
-        console.log(changeMachine.pay(itemPrice, paymentInput));
+
+        try {
+            var changeDenominations = changeMachine.pay(itemPrice, paymentInput);
+            console.log('SUCCESS!');
+            console.log(changeDenominations);
+        } catch(err) {
+            console.error('****WRONG****');
+            console.error(err);
+        }
+
     });
 }

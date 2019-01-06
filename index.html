@@ -6,14 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="./index.js"></script>
 
     <!-- <script src="index.js"></script> -->
 </head>
 <body>
-    <p id="price-display"></p>
-    <input type="text" name="payment" id="payment-input">
-    <button type="submit" id="submit-payment">Pay</button>
-    <button type="submit" id="refresh-button">Refresh</button>
+    <div class="content-container">
+        <p id="price-display"></p>
+        <div class="field-container">
+            <input type="text" name="payment" id="payment-input">
+            <button type="submit" id="submit-payment">Pay</button>
+            <button type="submit" id="refresh-button">Refresh</button>
+        </div>
+    </div>
 </body>
 </html>

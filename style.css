@@ -1,0 +1,54 @@
+html, body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content-container {
+    background: #d8fbff;
+    border-radius: 0.5em;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1em;
+    width: 600px;
+}
+
+.field-container {
+    margin: 0 auto;
+    width: 75%;
+}
+
+#price-display {
+    color: #418a91;
+    font-size: 2em;
+    margin: .25em 0;
+    margin-bottom: 0.4em;
+}
+
+.field-container button#refresh-button {
+    background: lightgreen;
+    border-color: lightgreen;
+    color: #19af16;
+}
+
+.field-container button {
+    background: #2cc8d6;
+    border: 1px solid #2cc8d6;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 0.75rem;
+    line-height: 2.5;
+    margin: 0;
+    padding: 0 1.25em;    
+}
+
+.field-container input {
+    background: white;
+    border: 1px solid #2cc8d6;
+    border-radius: 0.25em;
+    font-size: 0.75rem;
+    line-height: 2.5;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
